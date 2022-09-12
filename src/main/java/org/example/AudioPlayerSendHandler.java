@@ -6,6 +6,7 @@ import net.dv8tion.jda.api.audio.AudioSendHandler;
 import org.jetbrains.annotations.Nullable;
 
 import java.nio.ByteBuffer;
+import java.nio.Buffer;
 
 public class AudioPlayerSendHandler implements AudioSendHandler {
     private final AudioPlayer audioPlayer;
@@ -25,10 +26,10 @@ public class AudioPlayerSendHandler implements AudioSendHandler {
     }
 
 
-    @Override
-    public ByteBuffer provide20MsAudio() {
-        return this.buffer.flip();
-    }
+//    @Override
+   // public ByteBuffer provide20MsAudio() {
+    //    return this.buffer.flip();
+    //}
 
     @Override
     public boolean isOpus() {
