@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Class-Path: /libs/Timer-Potion-1.0-SNAPSHOT.jar
+Main-Class: org.example.TimerMain
+
