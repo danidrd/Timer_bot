@@ -26,10 +26,10 @@ public class AudioPlayerSendHandler implements AudioSendHandler {
     }
 
 
-//    @Override
-   // public ByteBuffer provide20MsAudio() {
-    //    return this.buffer.flip();
-    //}
+    @Override
+    public ByteBuffer provide20MsAudio() {
+        return this.buffer.flip();
+    }
 
     @Override
     public boolean isOpus() {
