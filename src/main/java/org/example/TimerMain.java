@@ -17,7 +17,7 @@ public class TimerMain {
     public static String prefix = "-";
 
     public static void main(String[] args ) throws LoginException {
-        jda = JDABuilder.createDefault("MTAxNjI5NDc2NTYyNjY2Mjk2Mg.G6lZtl.4ZxlkK4C9hCdxPAJSa1_67Pm9sd9Gbm2D47hho")
+        jda = JDABuilder.createDefault(System.getenv().get("TOKEN"))
                 .setAutoReconnect(true)
                 .enableIntents(GatewayIntent.MESSAGE_CONTENT)
                 .disableIntents(GatewayIntent.GUILD_PRESENCES)
