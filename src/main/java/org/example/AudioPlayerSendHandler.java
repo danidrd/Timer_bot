@@ -6,7 +6,6 @@ import net.dv8tion.jda.api.audio.AudioSendHandler;
 import org.jetbrains.annotations.Nullable;
 
 import java.nio.ByteBuffer;
-import java.nio.Buffer;
 
 public class AudioPlayerSendHandler implements AudioSendHandler {
     private final AudioPlayer audioPlayer;
@@ -26,9 +25,10 @@ public class AudioPlayerSendHandler implements AudioSendHandler {
     }
 
 
+    @SuppressWarnings("RedundantCast")
     @Override
     public ByteBuffer provide20MsAudio() {
-        return this.buffer.flip();
+        return (ByteBuffer) this.buffer.flip();
     }
 
     @Override
