@@ -17,7 +17,7 @@ public class ThreadScorreggione implements Runnable {
 
         synchronized (this){
             try{
-                wait(10000);
+                wait(600000);
                 PlayerManager.getInstance()
                         .loadAndPlay(messageChannelUnion.asTextChannel(), "https://www.youtube.com/watch?v=VM1y7s4V4Cs");
             }catch(InterruptedException e){
