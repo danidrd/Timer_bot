@@ -27,14 +27,23 @@ public class Commands extends ListenerAdapter {
         if(args[0].equalsIgnoreCase(TimerMain.prefix + "info")) {
             EmbedBuilder info = new EmbedBuilder();
             info.setTitle("TimerPotion Bot Information");
-            info.setDescription("Usage : -setTimer for set a timer which lasts 10 minutes ");
+            info.setDescription("Usage : -setTimer <number> for set a timer which lasts <number> minutes and signal every 10 minutes ");
             info.setColor(0xfc7f03);
-            info.setFooter("Created by Giorgio6 and geoteo(ThreadScurreggione)", event.getMember().getUser().getAvatarUrl());
+            info.setFooter("Created by Giorgio6 and geoteo", event.getMember().getUser().getAvatarUrl());
 
             event.getChannel().sendMessageEmbeds(info.build()).queue();
             info.clear();
         }else if(args[0].equalsIgnoreCase(TimerMain.prefix + "setTimer")) {
-
+            Integer i = 0;
+            try{
+                 i = Integer.valueOf(args[1]);
+                 if((i % 10) != 0){
+                     throw new NumberFormatException();
+                 }
+            }catch(NumberFormatException e){
+                event.getChannel().sendMessage("Inserisci un numero multiplo di 10").queue();
+                System.exit(1);
+            }
             final MessageChannelUnion channel = event.getChannel();
             final Member self = event.getMember();
             final GuildVoiceState selfVoiceState = self.getVoiceState();
@@ -70,8 +79,10 @@ public class Commands extends ListenerAdapter {
            /* while(elapsedTime < 600000) {
                 elapsedTime = (new Date()).getTime() - startTime;
             }*/
-
-            Thread t = new Thread(new ThreadScorreggione(channel));
+            ThreadMain threadMain = new ThreadMain(channel, i);
+            Thread main = new Thread(threadMain);
+            main.start();
+            Thread t = new Thread(new ThreadScorreggione(channel,threadMain));
             t.start();
 
 
